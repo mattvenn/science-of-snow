@@ -197,8 +197,9 @@ public class start {
 			if( startMessage )
 			{
 				snowInst.buttonLED( startButton, true);
-				snowInst.setMessage( "the science of snow\npress start", 0, true, false);
-				snowInst.setMessage( "you can adjust humidity and temperature\nof the cloud as it grows", 4, false, false);
+				snowInst.setMessage( "the science of snow\nleft click to start", 0, true, false);
+//				snowInst.setMessage( "the science of snow\npress start", 0, true, false);
+				snowInst.setMessage( "you can adjust humidity (mouse left and right)\nand temperature (mouse up and down)\nof the cloud as the snowflake grows...", 6, false, false);
 			}
 			logger.info( "starting grow: " + numSnowFlakes );
 			double startTime = 	System.currentTimeMillis();
@@ -226,14 +227,15 @@ public class start {
 				//	snowInst.adjustDraw(g,0.3f,0.5f);
 				snowInst.buttonLED( startButton, false );
 				try {
-					Thread.sleep( 3000 );
+					Thread.sleep( 5000 );
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				snowInst.buttonLED( startButton, true );
 				snowInst.buttonLED( printButton, true );
-				String button = snowInst.setMessage( "press print to make a card (£1),\nor press start to make another", 20 , true, true);
+//				String button = snowInst.setMessage( "press print to make a card (£1),\nor press start to make another", 20 , true, true);
+				String button = snowInst.setMessage( "right click to print,\nor left click to start again", 20 , true, true);
 				if( button == "" )
 					startMessage = true;
 				else if( button == "start" )
@@ -263,10 +265,12 @@ public class start {
 					Printit print = new Printit();
 					
 					snowInst.buttonLED( printButton, true );
-					snowInst.setMessage( "is there paper in the printer?\npress print", 0, false, true);
+//					snowInst.setMessage( "is there paper in the printer?\npress print", 0, false, true);
+					snowInst.setMessage( "check that there's paper in the printer\nthen right click", 0, false, true);
 					if( print.printsWaiting() > 0 )
 					{
-						snowInst.setMessage( "is the printer's orange button lit?\npress the orange button and then press print", 0, false, true);
+	//					snowInst.setMessage( "is the printer's orange button lit?\npress the orange button and then press print", 0, false, true);
+						snowInst.setMessage( "is the printer's orange button lit?\npress the orange button and then right click", 0, false, true);
 						snowInst.buttonLED( printButton, false );
 					}
 					snowInst.buttonLED( startButton, false );

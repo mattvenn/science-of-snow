@@ -463,16 +463,15 @@ public class snow extends JPanel {
 		g2d.setPaint(textcolor);
 		//fix this controlBarWidth stuff
 		String[] messages = snow.message.split("\n");
-		if( messages.length == 1)
-			drawCenteredString( snow.message, frameWidth + 2* controlBarWidth, frameHeight, 0, g2d);
-		else if( messages.length == 2)
+		double startY = ( messages.length / 2 ) ;
+		for( int i =0 ; i < messages.length; i ++ )
 		{
-			drawCenteredString( messages[0], frameWidth + 2* controlBarWidth, frameHeight, 1, g2d);
-			drawCenteredString( messages[1], frameWidth + 2* controlBarWidth, frameHeight, -1, g2d);
+			drawCenteredString( messages[i], frameWidth + 2* controlBarWidth, frameHeight, startY -- , g2d);
 		}
 	}
 
-	public void drawCenteredString(String s, int w, int h, int offset, Graphics g) {
+	public void drawCenteredString(String s, int w, int h, double offset, Graphics g) {
+		offset *= 2.5;
 		FontMetrics fm = g.getFontMetrics();
 		int x = (w - fm.stringWidth(s)) / 2;
 		int fontHeight = fm.getAscent() - fm.getDescent();
